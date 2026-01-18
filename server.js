@@ -43,7 +43,7 @@ app.get("/ask", async (req, res) => {
         .send("GROQ ERROR:\n" + JSON.stringify(answer, null, 2))
     }
 
-    res.status(200).send(answer.choices[0].message.content)
+    res.status(200).send(`<pre>${answer.choices[0].message.content}</pre>`)
   } catch (err) {
     console.error("GROQ_REQUEST_FAILED", err.message)
     res.status(500).send("Internal Server Error")
